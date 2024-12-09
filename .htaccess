@@ -1,0 +1,69 @@
+# BEGIN Imagify: webp file type
+<IfModule mod_mime.c>
+	AddType image/webp .webp
+</IfModule>
+# END Imagify: webp file type
+
+# BEGIN Images to WebP
+<IfModule mod_mime.c>
+AddType image/webp .webp
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} "/wp-content/"
+RewriteCond %{REQUEST_FILENAME} "\.(jpg|jpeg|gif|png)$"
+RewriteCond %{REQUEST_FILENAME}\.webp -f
+RewriteRule ^(.+)$ $1\.webp [NC,T=image/webp,E=webp,L]
+</IfModule>
+# END Images to WebP
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^l/([A-Za-z0-9-_]+)$ go.php?hash=$1 [NC,L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+
+php_value max_input_vars 250000
+
+# BEGIN WPSuperCache
+# Les directives (lignes) entre « BEGIN WPSuperCache » et « END WPSuperCache » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END WPSuperCache
+
+
+# BEGIN WordPress
+# Les directives (lignes) entre « BEGIN WordPress » et « END WordPress » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+# BEGIN Speed Optimizer by 10Web
+# The directives (lines) between "BEGIN Speed Optimizer by 10Web" and "END Speed Optimizer by 10Web" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+
+
+# END Speed Optimizer by 10Web

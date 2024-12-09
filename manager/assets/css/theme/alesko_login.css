@@ -1,0 +1,26 @@
+* {
+	outline: none;
+}
+.text-success {
+	color: #6384f8 !important;
+}
+
+.login .login-header .brand .logo {
+	border-color: #6384f8 #ff6600 #ffff00;
+}
+
+.btn.btn-success,
+.btn.btn-success.active,
+.btn.btn-success:active,
+.btn.btn-success:focus {
+	background: #6384f8;
+	border-color: #6384f8;
+}
+.btn.btn-success:hover {
+	background: #6384f8;
+	border-color: #6384f8;
+	opacity: 0.9;
+}
+.login.login-with-news-feed .news-image img {
+	min-height: 100%;
+}

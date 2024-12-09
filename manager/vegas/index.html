@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Useful meta tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow, noodp">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Creation</title>
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <script src="js/signals.min.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+   <!-- <script src="js/FileSaver.min.js"></script>-->
+	<script src="js/TextureFactory.js?v=1.1.0"></script>
+    <style type="text/css">
+        html {
+            background-color: #D8D8D8;
+        }
+
+        *:not(input) {
+            user-select: none;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+        .creation__label-checbox:disabled+.creation-btn-label-box {
+            opacity: 0.25;
+            cursor: auto;
+        }
+
+        .creation__label-checbox:checked+.creation-btn-label-box {
+            border: 1px solid rgba(59, 59, 59, .9);
+            background-color: rgba(59, 59, 59, .1);
+        }
+
+        .creation-btn-label-box {
+            justify-content: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: none;
+            height: 25px;
+            width: 25px;
+            transition: .4s;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+
+        }
+
+        #svgContainer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            outline: #CCC solid 1px;
+            overflow: auto;
+            user-select: none;
+        }
+
+        #svgContainer svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*outline:#F00 solid 1px;*/
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .crosshair-cursor {
+            cursor: crosshair;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        input[type=range]::-moz-range-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        .creation__zoom-title {
+            font-style: normal;
+
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .creation__zoom-range {
+            width: 100px !important;
+        }
+
+        .creation__zoom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__zoom-coll {
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-title {
+
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+
+        }
+
+        .creation__logo-span {
+
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 17px;
+            color: #383838;
+            padding-right: 15px;
+        }
+
+        .creation__logo-wrapp {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation {
+            width: 100%;
+            overflow-y: auto;
+            height: 75vh;
+        }
+
+        .box-left {
+            height: 100vh;
+        }
+
+        .creation__button {
+            width: 268px;
+            height: 50px;
+            flex-shrink: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        .creation__row-shell-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__input-text {
+            width: 190px;
+        }
+
+        .btn-dell {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 35px;
+            height: 35px;
+            background: url('img/bk.svg') no-repeat center center;
+            cursor: pointer;
+        }
+
+        .creation-select {
+            width: 240px;
+        }
+
+        .creation__row-7 {
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation__row-3-wrapp {
+            justify-content: flex-end;
+            padding-right: 0;
+        }
+
+        .creation-btn-2 {
+            margin-left: 15px;
+        }
+
+        .creation__row-5 .creation__label-span::before {
+            content: '';
+            right: -60px;
+        }
+
+        .creation__row-6 .creation__label-span::before,
+        .creation__row-contour .creation__label-span::before {
+            content: '';
+            right: 0;
+        }
+
+        .creation__row-contour {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .creation__row-shell.creation__row-shell-new {
+            margin-top: 16px;
+            margin-bottom: 5px;
+        }
+
+        .creation__row-contour {
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .logo-range {
+            width: 50px !important;
+        }
+
+        .creation__logo-wrapp {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-wrapp .creation__label-span::before {
+            content: '';
+            right: 30px;
+        }
+
+
+        .creation__row-logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cration__row-2-wrapp {
+            justify-content: flex-end;
+        }
+
+        .creation {
+            padding-right: 30px;
+        }
+
+        .creation-select {
+            width: 100%;
+        }
+
+        .creation__row-shell-5,
+        .creation__row-shell {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-shell-4 {
+            margin-bottom: 7px;
+        }
+
+        .creation__row-shell-2 {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-3.creation__row-shell {
+            padding-bottom: 11px;
+        }
+
+        .creation__row-logo {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+		<div class="box-left">
+			<header class="header">
+				<div class="container">
+					<div class="header__wrapp">
+						<a href="#" class="logo logo-return">
+							<img src="img/logo.svg" alt="" class="logo-img">
+						</a>
+					</div>
+				</div>
+			</header>
+			<div class="creation">
+				<div class="creation__wrapper">
+					<div id="ui">
+						<div class="creation__row-shell">
+							<span class='creation__zoom-title'>Orientation</span>
+						</div>
+
+						<div class="creation__row">
+							Verticale <input type="radio" name="orientation" value="vertical" checked />
+						</div>
+
+						<div class="creation__row">
+							Horizontal <input type="radio" name="orientation" value="horizontal" />
+						</div>
+
+						<div class="creation__row">
+							Carré <input type="radio" name="orientation" value="square" />
+						</div>
+
+						<div class="creation__row-shell">
+							<span class='creation__zoom-title'>Nombre de photos</span>
+						</div>
+
+						<div class="creation__row">
+							1<input type="radio" name="qty" value="1" checked />
+							2<input type="radio" name="qty" value="2" />
+							3<input type="radio" name="qty" value="3" />
+							4<input type="radio" name="qty" value="4" />
+						</div>
+
+						<div class="creation__row-shell"></div>
+						<div class="creation__row" id="addZoneButton">
+							Ajouter une zone
+							<button class="creation-btn"><img src="img/crous.svg" alt="" class="cration-btn-img" /></button>
+						</div>
+
+						<div class="creation__row"></div>
+						<div class="creation__row"></div>
+						<div class="creation__row"></div>
+						<div class="creation__zoom-row">
+							<span class='creation__zoom-title'>Zoom</span>
+							<div class="creation__zoom-coll">
+								<input id="zoomInputRange" class='creation__zoom-range' type="range" min="0.1" max="2.0"
+									step="0.01" value="1.0" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button class="creation__button" id="resetButton">Réinitialiser</button>
+				<button class="creation__button" id="saveDataButton">Sauvegarder</button>
+
+			</div>
+
+		</div>
+		<div class="box-creation">
+           <div id="svgContainer"></div>
+        </div>
+	</div>
+    <script src="js/app.js?ver=1.1/0"></script>
+</body>
+
+</html>

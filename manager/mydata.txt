@@ -1,0 +1,1 @@
+UPDATE `orders_new` SET `template_id` = '466', `image_vegas` = '5dadf42cace53f1b35030d374fc8a911.png', `data` = '', `template_status` = '1' WHERE `id` = 6713

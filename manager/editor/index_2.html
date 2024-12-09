@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Useful meta tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow, noodp">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Creation</title>
+    <link rel="stylesheet" href="css/editing.css?v=1.0">
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <script src="js/signals.min.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/TextureFactory.js?ver=1.1"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: 'ITC Avant Garde Pro Bk';
+            src: url('font/ITCAvantGardePro-Bk.eot');
+            src: url('font/ITCAvantGardePro-Bk.eot?#iefix') format('embedded-opentype'),
+                url('font/ITCAvantGardePro-Bk.woff2') format('woff2'),
+                url('font/ITCAvantGardePro-Bk.woff') format('woff'),
+                url('font/ITCAvantGardePro-Bk.ttf') format('truetype'),
+                url('font/ITCAvantGardePro-Bk.svg#ITCAvantGardePro-Bk') format('svg');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+
+        html {
+            background-color: #D8D8D8;
+        }
+
+        *:not(input) {
+            user-select: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .creation__label-checbox:disabled+.creation-btn-label-box {
+            opacity: 0.25;
+            cursor: auto;
+        }
+
+        .creation__label-checbox:checked+.creation-btn-label-box {
+            border: 1px solid rgba(59, 59, 59, .9);
+            background-color: rgba(59, 59, 59, .1);
+        }
+
+        .creation-btn-label-box {
+            justify-content: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: none;
+            height: 25px;
+            width: 25px;
+            transition: .4s;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+
+        }
+
+        #svgContainer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            outline: #CCC solid 1px;
+            overflow: auto;
+            user-select: none;
+        }
+
+        #svgContainer svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*outline:#F00 solid 1px;*/
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .crosshair-cursor {
+            cursor: crosshair;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        input[type=range]::-moz-range-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        .creation__zoom-title {
+            font-style: normal;
+
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .creation__zoom-range {
+            width: 100px !important;
+        }
+
+        .creation__zoom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__zoom-coll {
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-title {
+
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+
+        }
+
+        .creation__logo-span {
+
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 17px;
+            color: #383838;
+            padding-right: 15px;
+        }
+
+        .creation__logo-wrapp {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation {
+            width: 100%;
+            overflow-y: auto;
+            height: 75vh;
+        }
+
+        .box-left {
+            height: 100vh;
+        }
+
+        .creation__button {
+            width: 268px;
+            height: 50px;
+            flex-shrink: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        .creation__row-shell-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__input-text {
+            width: 190px;
+        }
+
+        .btn-dell {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 35px;
+            height: 35px;
+            background: url('img/bk.svg') no-repeat center center;
+            cursor: pointer;
+        }
+
+        .creation-select {
+            width: 240px;
+        }
+
+        .creation__row-7 {
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation__row-3-wrapp {
+            justify-content: flex-end;
+            padding-right: 0;
+        }
+
+        .creation-btn-2 {
+            margin-left: 15px;
+        }
+
+        .creation__row-5 .creation__label-span::before {
+            content: '';
+            right: -60px;
+        }
+
+        .creation__row-6 .creation__label-span::before,
+        .creation__row-contour .creation__label-span::before {
+            content: '';
+            right: 0;
+        }
+
+        .creation__row-contour {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .creation__row-shell.creation__row-shell-new {
+            margin-top: 16px;
+            margin-bottom: 5px;
+        }
+
+        .creation__row-contour {
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .logo-range {
+            width: 50px !important;
+        }
+
+        .creation__logo-wrapp {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-wrapp .creation__label-span::before {
+            content: '';
+            right: 30px;
+        }
+
+
+        .creation__row-logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cration__row-2-wrapp {
+            justify-content: flex-end;
+        }
+
+        .creation {
+            padding-right: 30px;
+        }
+
+        .creation-select {
+            width: 100%;
+        }
+
+        .creation__row-shell-5,
+        .creation__row-shell {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-shell-4 {
+            margin-bottom: 7px;
+        }
+
+        .creation__row-shell-2 {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-3.creation__row-shell {
+            padding-bottom: 11px;
+        }
+
+        .creation__row-logo {
+            margin-bottom: 20px;
+        }
+
+        .creation-textarea-new {
+            width: 95%;
+            outline: none;
+            border: 0.75px solid #909090;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+
+
+        .creation-textarea-new-line {
+            position: relative;
+
+        }
+
+        .creation-btn-radio-new {
+
+            z-index: -1;
+            opacity: 0;
+
+        }
+
+        .creation-btn-radio-new:checked+svg .svg-path {
+            fill: #E7326A;
+        }
+
+        .creation-btn-label-radio svg {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .creation-btn-label-radio {
+
+            position: relative;
+            margin-left: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box-wrapp {
+            margin-top: auto;
+
+        }
+
+        .box-wrapp .entrance-box {
+            width: 270px;
+            margin: 0 auto;
+            background: #d34b8b;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+
+
+
+        }
+
+        .box-wrapp .entrance-box img {
+            width: 50px;
+            height: 40px;
+        }
+
+        .box-wrapp .entrance-content {
+            font-family: 'ITC Avant Garde Pro Bk';
+            font-weight: 300;
+            font-size: 15px;
+            text-align: center;
+            line-height: 1.2;
+            color: #fff;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-left">
+            <header class="header">
+                <div class="container">
+                    <div class="header__wrapp">
+                        <a href="javascript:window.history.go(-1);" class="logo logo-return">
+                            <img src="img/logo.svg" alt="" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="creation">
+                <div class="creation__titile">
+                    Modifier le texte
+                </div>
+
+                <div class="creation__wrapper">
+                    <div id="ui">
+                        <div id="commonTools" class="hidden">
+
+                            <div id="addTextButton" class="creation__row open-popup-title"
+                                data-popup='#creation__popup-title'>
+                                Ajouter une zone de texte
+                                <button class="creation-btn">
+                                    <img src="img/crous.svg" alt="" class="cration-btn-img"
+                                        data-popup='#creation__popup-title'>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div id="textTools" class="hidden">
+                            <div class="creation__row-shell  creation__row-shell-2">
+                                <div class="creation-textarea-new-line">
+                                    <textarea id="textInput" class="creation__input-text creation-textarea-new"
+                                        placeholder="Champ texte"></textarea>
+                                </div>
+                                <button id="deleteTextButton" class='btn-dell'>
+                                </button>
+                            </div>
+                            <div class="creation__row-shell creation__row-shell-3">
+                                <div class="creation-subtitle">
+                                    Police & taille
+                                </div>
+                                <select id="textFontFamilySelect" class='creation-select'>
+                                </select>
+                            </div>
+
+
+
+                            <div class="creation__row-2 creation__row-shell ">
+                                Taille
+                                <div class="cration__row-2-wrapp">
+                                    <input type="range" id="textScaleRange" min="0.1" max="4.0" value="1.0" step="0.05"
+                                        class="creation__input-range --width" />
+
+                                </div>
+                            </div>
+
+                            <div class="creation__row-2 creation__row-shell creation__row-shell-new">
+                                Opacité
+                                <div class="cration__row-2-wrapp">
+                                    <input type="range" id="textOpacityRange" min="0.0" max="1.0" value="1.0"
+                                        step="0.05" class="creation__input-range --width" />
+                                </div>
+                            </div>
+
+                            <div class="creation__row-3 creation__row-shell">
+                                <div class="creation__row-3-title">
+                                    Style
+                                </div>
+                                <div class="creation__row-3-wrapp">
+
+									<label class="creation-btn-label creation-btn-label-radio">
+                                        <input class="creation-btn-radio-new" name="textAnchor" value="start"
+                                            type="radio" checked />
+
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_206_197)">
+                                                <path class="svg-path"
+                                                    d="M13.934 3.06924H1.06599C0.47665 3.06924 0 2.59259 0 2.00325C0 1.41391 0.47665 0.937256 1.06599 0.937256H13.934C14.5234 0.937256 15 1.41391 15 2.00325C15 2.59259 14.5234 3.06924 13.934 3.06924Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M1.06599 8.2666H13.934C14.5234 8.2666 15 8.74324 15 9.33259C15 9.92192 14.5234 10.3986 13.934 10.3986H1.06599C0.47665 10.3986 0 9.92192 0 9.33259C0 8.74322 0.47665 8.2666 1.06599 8.2666Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M1.06584 4.60132H11.6557C12.245 4.60132 12.7217 5.07797 12.7217 5.66731C12.7217 6.25665 12.245 6.7333 11.6557 6.7333H1.06584C0.476501 6.7333 -0.000149727 6.25665 -0.000149727 5.66731C-0.000149727 5.07797 0.476501 4.60132 1.06584 4.60132Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M1.06572 11.9307H7.95354C8.54288 11.9307 9.01953 12.4073 9.01953 12.9967C9.01953 13.586 8.54288 14.0626 7.95354 14.0626H1.06572C0.476384 14.0626 -0.000265121 13.586 -0.000265121 12.9967C-0.000265121 12.4073 0.476384 11.9307 1.06572 11.9307Z"
+                                                    fill="#616160" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_206_197">
+                                                    <rect width="15" height="15" fill="white"
+                                                        transform="matrix(-1 0 0 1 15 0)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+
+
+                                    </label>
+                                    <label class="creation-btn-label creation-btn-label-radio">
+                                        <input class="creation-btn-radio-new" name="textAnchor" value="middle"
+                                            type="radio" />
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path class="svg-path"
+                                                d="M13.75 2.1875C13.75 1.93886 13.6512 1.7004 13.4754 1.52459C13.2996 1.34877 13.0611 1.25 12.8125 1.25H2.1875C1.93886 1.25 1.7004 1.34877 1.52459 1.52459C1.34877 1.7004 1.25 1.93886 1.25 2.1875C1.25 2.43614 1.34877 2.6746 1.52459 2.85041C1.7004 3.02623 1.93886 3.125 2.1875 3.125H12.8125C13.0611 3.125 13.2996 3.02623 13.4754 2.85041C13.6512 2.6746 13.75 2.43614 13.75 2.1875Z"
+                                                fill="#616160" />
+                                            <path class="svg-path"
+                                                d="M10.3125 11.875H4.6875C4.43886 11.875 4.2004 11.9738 4.02459 12.1496C3.84877 12.3254 3.75 12.5639 3.75 12.8125C3.75 13.0611 3.84877 13.2996 4.02459 13.4754C4.2004 13.6512 4.43886 13.75 4.6875 13.75H10.3125C10.5611 13.75 10.7996 13.6512 10.9754 13.4754C11.1512 13.2996 11.25 13.0611 11.25 12.8125C11.25 12.5639 11.1512 12.3254 10.9754 12.1496C10.7996 11.9738 10.5611 11.875 10.3125 11.875Z"
+                                                fill="#616160" />
+                                            <path class="svg-path"
+                                                d="M10.9375 4.79199H4.0625C3.81386 4.79199 3.5754 4.89076 3.39959 5.06658C3.22377 5.24239 3.125 5.48085 3.125 5.72949C3.125 5.97813 3.22377 6.21659 3.39959 6.3924C3.5754 6.56822 3.81386 6.66699 4.0625 6.66699H10.9375C11.1861 6.66699 11.4246 6.56822 11.6004 6.3924C11.7762 6.21659 11.875 5.97813 11.875 5.72949C11.875 5.48085 11.7762 5.24239 11.6004 5.06658C11.4246 4.89076 11.1861 4.79199 10.9375 4.79199Z"
+                                                fill="#616160" />
+                                            <path class="svg-path"
+                                                d="M12.1875 8.33301H2.8125C2.56386 8.33301 2.3254 8.43178 2.14959 8.6076C1.97377 8.78341 1.875 9.02187 1.875 9.27051C1.875 9.51915 1.97377 9.75761 2.14959 9.93342C2.3254 10.1092 2.56386 10.208 2.8125 10.208H12.1875C12.4361 10.208 12.6746 10.1092 12.8504 9.93342C13.0262 9.75761 13.125 9.51915 13.125 9.27051C13.125 9.02187 13.0262 8.78341 12.8504 8.6076C12.6746 8.43178 12.4361 8.33301 12.1875 8.33301Z"
+                                                fill="#616160" />
+                                        </svg>
+
+                                    </label>
+                                    <label class="creation-btn-label creation-btn-label-radio">
+                                        <input class="creation-btn-radio-new" name="textAnchor" value="end"
+                                            type="radio" />
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_206_204)">
+                                                <path class="svg-path"
+                                                    d="M1.06599 3.06924H13.934C14.5233 3.06924 15 2.59259 15 2.00325C15 1.41391 14.5233 0.937256 13.934 0.937256H1.06599C0.47665 0.937256 0 1.41391 0 2.00325C0 2.59259 0.47665 3.06924 1.06599 3.06924Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M13.934 8.2666H1.06599C0.47665 8.2666 0 8.74324 0 9.33259C0 9.92192 0.47665 10.3986 1.06599 10.3986H13.934C14.5233 10.3986 15 9.92192 15 9.33259C15 8.74322 14.5233 8.2666 13.934 8.2666Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M13.9342 4.60132H3.34431C2.75497 4.60132 2.27832 5.07797 2.27832 5.66731C2.27832 6.25665 2.75497 6.7333 3.34431 6.7333H13.9342C14.5235 6.7333 15.0001 6.25665 15.0001 5.66731C15.0001 5.07797 14.5235 4.60132 13.9342 4.60132Z"
+                                                    fill="#616160" />
+                                                <path class="svg-path"
+                                                    d="M13.9343 11.9307H7.04646C6.45712 11.9307 5.98047 12.4073 5.98047 12.9967C5.98047 13.586 6.45712 14.0626 7.04646 14.0626H13.9343C14.5236 14.0626 15.0003 13.586 15.0003 12.9967C15.0003 12.4073 14.5236 11.9307 13.9343 11.9307Z"
+                                                    fill="#616160" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_206_204">
+                                                    <rect width="15" height="15" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+
+                                    </label>
+
+                                    <label class="creation-btn-label">
+                                        <input id='textFontWeightCheckbox' type="checkbox"
+                                            class="creation__label-checbox">
+                                        <div class="creation-btn-label-box">
+                                            <img src="img/G.svg" alt="" class="creation-btn-imgs">
+                                        </div>
+                                    </label>
+                                    <label class="creation-btn-label">
+                                        <input id='textFontStyleCheckbox' type="checkbox"
+                                            class="creation__label-checbox">
+                                        <div class="creation-btn-label-box">
+                                            <img src="img/b-3.svg" alt="" class="creation-btn-imgs">
+                                        </div>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="creation__row-shell creation__row-shell-5">
+                                <div class="creation__row-4">
+                                    Couleur du texte
+                                    <label class="label__input-wrapp">
+                                        <span class="label-input-color">
+                                            <input id="textFillColorInput" class="creation__input-color" type="color"
+                                                value="#C9A53D">
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="creation__row-5">
+                                    <label class="creation__label">
+                                        <input id='textGradientCheckbox' type="checkbox"
+                                            class="creation__label-checkbox-h">
+                                        <span class="creation__label-span">
+                                            Dégradé
+                                        </span>
+                                    </label>
+                                    <label class="label__input-wrapp input__hiden --hiden">
+                                        <span class="label-input-color">
+                                            <input id="textFillColor2Input" class="creation__input-color" type="color"
+                                                value="#D22F25">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="creation__row-6 creation__row-shell">
+                                Ombre portée
+
+                                <label class="creation__label">
+                                    <input id="textShadowCheckbox" type="checkbox" class="creation__label-checkbox-h">
+                                    <span class="creation__label-span">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="creation__row-contour ">
+                                Contour
+                                <label class="creation__label">
+                                    <input id="textStrokeCheckbox" type="checkbox" class="creation__label-checkbox-h">
+                                    <span class="creation__label-span">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="contour-box">
+                                <div class="creation__row-7 ">
+                                    Couleur du contour
+                                    <label class="label__input-wrapp">
+                                        <span class="label-input-color">
+                                            <input id="textStrokeColorInput" class="creation__input-color" type="color"
+                                                value="#010202">
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="creation__row-8 creation__row-shell">
+                                    Largeur du contour
+                                    <div class="creation__row-8-box">
+                                        <input id="textStrokeWidthRange" type="range" value="1" min="0.25" max="24"
+                                            step="0.25" class="creation__input-range creation__input-range --width-2" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="logoTools" class="hidden">
+                            <div class="creation__row-logo">
+                                <div class='creation__logo-title'>Logo</div>
+                                <div class='creation__logo-wrapp'>
+                                    <label class="creation__label">
+                                        <input id="logoInvertedCheckbox" type="checkbox"
+                                            class="creation__label-checkbox-h">
+                                        <span class="creation__label-span">
+                                        </span>
+                                    </label>
+                                    <input type="range" class='logo-range' id="logoScaleRange" min="0.1" max="4.0"
+                                        value="1.0" step="0.05" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="creation__zoom-row">
+                            <span class='creation__zoom-title'>Zoom</span>
+                            <div class="creation__zoom-coll">
+                                <input id="zoomInputRange" class='creation__zoom-range' type="range" min="0.1" max="2.0"
+                                    step="0.05" value="1.0" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="popup__bg">
+                    <div id='creation__popup-one' class="creation__popup popup">
+                        <img class="creation__popup-img" src="img/creation-popup-img.svg" alt="">
+                        <div class="creation__popup-title">
+                            Etes-vous sûr de valider votre maquette?
+                        </div>
+                        <div class="creation__popup-text">
+                            Une fois votre maquette validée, vous ne pourrez<br>
+                            plus revenir dessus.
+                        </div>
+                        <div class="creation__popup-row">
+
+                            <button class="dialog-action-cancel cratino__popup-btn close-popup">
+                                Annuler
+                            </button>
+                            <a href="javascript:void(0)" class="dialog-action-save cratino__popup-btn close-popup">
+                                Valider
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id='creation__popup-title' class="creation__popup-title-form popup">
+                        <div class="creation__popup-title-form-title">
+                            Veuillez saisir votre texte
+                        </div>
+                        <input class='creation__popup-title-input dialog-input' type="text" value="ABCDEFGH">
+                        <div class="creation__popup-row creation__popup-title-row">
+                            <button class="dialog-action-cancel cratino__popup-btn close-popup">
+                                Annuler
+                            </button>
+                            <button class="dialog-action-add  cratino__popup-btn close-popup">
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="aside__body">
+                <div class="aside__container">
+                    <div class="aside__buttons">
+                        <button class="button button_grey" onclick="openPopup('.popup-valider')">Enregist <br>rercomme brouillon</button>
+                        <button class="button button_filled open-popup-cteation" data-popup='#creation__popup-one' id="saveAsImagetoServerButton">Valider cette maquette</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--button class="creation__button open-popup-cteation" data-popup='#creation__popup-one'
+                id="saveAsImagetoServerButton">
+                Valider
+            </button-->
+
+
+
+            <!--button id="saveFrameButton">Save Frame</button>
+			<button id="savePreviewButton">Save Preview</button>
+            <button id="saveResultButton">Save Result</button>
+			<button id="saveDataButton">Save Data</button-->
+            <!--<button id="saveAsSVGButton">Save as SVG</button>-->
+            <!--button id="savePreview2Button">Save Preview 2</button-->
+            <div class="box-wrapp">
+                <!--a href="https://youtube.com/watch?v=0NltGV11wv4&feature=share" class="entrance-box" target="_blank">
+                    <div class="entrance-box-img">
+                        <img src="./img/Picto-2.png" alt="" class="entrance-img">
+                    </div>
+                    <div class="entrance-content">
+                        Une question ? Regardez le tutoriel vidéo en cliquant ICI
+                    </div>
+                </a-->
+
+
+                <div class="footer">
+                    <div class="footer__wrapp">
+                        01.45.01.66.66 |
+                        <a class="footer__wrapp-link" href="mailto:contact@shootnbox.fr">contact@shootnbox.fr </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-creation">
+            <div class="box-creation-title">Personnalisez votre contour photo en y ajoutant votre texte.</div>
+            <div id="svgContainer"></div>
+            <div class="radio-box radio-box_light editor-checkbox" style="left: 60%;">
+                <div class="radio-box__check">
+                    <input type="checkbox" class="radio-box__input" id="voir">
+                   <label for="voir" class="radio-box__check-l" id="voir-l"></label>
+                </div>
+                <label for="voir">Voir sans image de présentation</label>
+            </div>
+        </div>
+
+        <div class="popup_new popup-valider"> <!-- adding "popup_opened" class will open the popup -->
+              <div class="popup__card">
+                  <div class="popup__header">
+                      <h2 class="popup__title title">Êtes-vous sûr ?</h2>
+                  </div>
+                  <p class="popup__subtitle">La validation d’une maquette <br> est définitive</p>
+
+                  <div class="popup__buttons">
+                      <button class="popup__button button button_filled" onclick="closePopup()">
+                          <span>Valider</span>
+                          <img src="./img/editing/icons/at-icon.svg" alt="">
+                      </button>
+                      <button class="popup__button button button_grey" onclick="closePopup()">
+                          <span>Annuler</span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+    </div>
+    <script src="js/app.js?v=1.5.4"></script>
+    <script>
+        function openPopup(el) {
+            document.querySelectorAll('.popup_new').forEach(element => {
+                element.classList.remove('popup_opened')
+            })
+            document.querySelector(el).classList.add('popup_opened');
+        }
+        function closePopup() {
+            document.querySelectorAll('.popup_new').forEach(element => {
+                element.classList.remove('popup_opened')
+            })
+        }
+    </script>
+</body>
+
+</html>

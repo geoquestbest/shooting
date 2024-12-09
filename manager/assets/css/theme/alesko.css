@@ -1,0 +1,288 @@
+* {
+	outline: none;
+}
+.clearfix{
+	clear: both;
+}
+.main-font {
+	font-family: Tahoma, sans-serif;
+}
+.navbar-logo,
+.coming-soon .brand .logo,
+.login .login-header .brand .logo {
+	display: block;
+	width: 197px;
+	height: 54px;
+	margin-top: -12px;
+	margin-left: -10px;
+	background: url('../../../img/logo_w.svg') 50% 50% no-repeat;
+	background-size: contain;
+	border: none;
+	opacity: 1;
+}
+.navbar.navbar-inverse .navbar-brand,
+.sidebar .nav > li.active > a, 
+.sidebar .nav > li.active > a:focus, 
+.sidebar .nav > li.active > a:hover,
+.page-sidebar-minified .sidebar .nav > li.has-sub.active:focus > a, 
+.page-sidebar-minified .sidebar .nav > li.has-sub.active:hover > a, 
+.page-sidebar-minified .sidebar .nav > li.has-sub.active > a,
+.label.label-theme,
+.btn.btn-scroll-to-top {
+	background: #348fe2;
+}
+.navbar.navbar-inverse .navbar-brand {
+	color: #c0aace !important;
+	font-family: Tahoma, sans-serif;
+	font-size: 27px;
+}
+.navbar.navbar-inverse,
+.navbar.navbar-inverse .navbar-brand {
+	background: #454543; /* Old browsers */
+	background: -moz-linear-gradient(top, #454543 1%, #31312f 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #454543 1%,#31312f 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #454543 1%,#31312f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#454543', endColorstr='#31312f',GradientType=0 ); /* IE6-9 */
+}
+.text-theme,
+.sidebar .sub-menu > li.active > a:before {
+	color: #348fe2;
+}
+@media (max-width: 767px) {
+	.navbar-inverse .navbar-header {
+		background: #242a30;
+	}
+}
+
+
+/* Added in v1.5 */
+
+.gradient-enabled .navbar.navbar-inverse .navbar-brand,
+.gradient-enabled .sidebar .nav > li.active > a, 
+.gradient-enabled .sidebar .nav > li.active > a:focus, 
+.gradient-enabled .sidebar .nav > li.active > a:hover,
+.gradient-enabled.page-sidebar-minified .sidebar .nav > li.has-sub.active:focus > a, 
+.gradient-enabled.page-sidebar-minified .sidebar .nav > li.has-sub.active:hover > a, 
+.gradient-enabled.page-sidebar-minified .sidebar .nav > li.has-sub.active > a,
+.gradient-enabled .label.label-theme,
+.gradient-enabled .btn.btn-scroll-to-top,
+.gradient-enabled .top-menu .nav > li.active > a, 
+.gradient-enabled .top-menu .nav > li.active > a:focus, 
+.gradient-enabled .top-menu .nav > li.active > a:hover {
+	background: rgb(103,176,240); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3YjBmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzNDhmZTIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,	rgba(103,176,240,1) 0%, rgba(52,143,226,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(103,176,240,1)), color-stop(100%,rgba(52,143,226,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,	rgba(103,176,240,1) 0%,rgba(52,143,226,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,	rgba(103,176,240,1) 0%,rgba(52,143,226,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,	rgba(103,176,240,1) 0%,rgba(52,143,226,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,	rgba(103,176,240,1) 0%,rgba(52,143,226,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67b0f0', endColorstr='#348fe2',GradientType=0 ); /* IE6-8 */
+}
+.pace-progress {
+	background: #348fe2;
+}
+.pace .pace-activity {
+	border-top-color: #348fe2;
+	border-left-color: #348fe2;
+}
+
+
+/* Added in v1.7 */
+
+.page-with-light-sidebar .sidebar .nav > li.active > a > i {
+	color: #348fe2;
+}
+.page-with-light-sidebar .sidebar .nav > li.active > a .badge,
+.page-with-light-sidebar .sidebar .nav > li.active > a .label.label-theme {
+	background: #348fe2;
+}
+
+
+/* Added in v1.9 */
+
+.top-menu .nav > li.active > a, 
+.top-menu .nav > li.active > a:focus, 
+.top-menu .nav > li.active > a:hover {
+	background: #348fe2;
+}
+
+/* Added by EvPut */
+.theme-panel .theme-collapse-btn {
+	color: #ffffff;
+	background-color: #2d353c;
+}
+.badge {
+	background-color: #f59c1a;
+}
+.dt-buttons .btn-default:first-child {
+	background: #00acac;
+	border-color: #00acac;
+}
+.dt-buttons .btn-default:first-child:hover {
+	background: #008a8a;
+	border-color: #008a8a;
+}
+.dt-buttons .btn-default:last-child {
+	background: #348fe2;
+	border-color: #348fe2;
+}
+.dt-buttons .btn-default:last-child:hover {
+	background: #2a72b5;
+	border-color: #2a72b5;
+}
+.dropzone {
+	min-height: 140px!important;
+	border: 1px dashed #00acac!important;
+}
+.dropzone .dz-preview.dz-image-preview .btn {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	z-index: 100;
+	cursor: pointer;
+}
+.dropzone .dz-preview.dz-image-preview .btn .fa {
+	cursor: pointer;
+}
+.delete-route-image {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	z-index: 100;
+	cursor: pointer;
+}
+.contents-table th,
+.menu-table th,
+.widgets-table th,
+.gallery-table th,
+.contents-table td:nth-child(1),
+.menu-table td:nth-child(1),
+.widgets-table td:nth-child(1),
+.gallery-table td:nth-child(1),
+.contents-table td:nth-child(4),
+.contents-table td:nth-child(5),
+.menu-table td:nth-child(5),
+.widgets-table td:nth-child(3),
+.widgets-table td:nth-child(4),
+.gallery-table td:nth-child(4),
+.users-table th,
+.users-table td:nth-child(1),
+.users-table td:nth-child(3),
+.users-table td:nth-child(4),
+.users-table td:nth-child(5),
+.users-table td:nth-child(6),
+.orders-table th,
+.orders-table td:nth-child(1),
+.orders-table td:nth-child(3),
+.orders-table td:nth-child(4),
+.orders-table td:nth-child(5),
+.orders-table td:nth-child(6)
+.orders-table td:nth-child(7) {
+	text-align: center;
+}
+
+.contents-table td,
+.menu-table td,
+.widgets-table td,
+.gallery-table td,
+.users-table td,
+.orders-table td {
+	vertical-align: middle!important;
+	word-wrap: break-word!important;
+	white-space: normal!important;
+}
+
+.contents-table th:nth-child(1),
+.menu-table th:nth-child(1),
+.widgets-table th:nth-child(1),
+.gallery-table th:nth-child(1),
+.users-table th:nth-child(1),
+.orders-table th:nth-child(1) {
+	width: 50px;
+}
+
+.contents-table th:nth-child(5),
+.menu-table th:nth-child(5),
+.widgets-table th:nth-child(4),
+.gallery-table th:nth-child(4),
+.users-table th:nth-child(5),
+.users-table th:nth-child(6),
+.orders-table th:nth-child(6) {
+	width: 75px;
+}
+
+.users-table th:nth-child(3),
+.users-table th:nth-child(4),
+.orders-table th:nth-child(3),
+.orders-table th:nth-child(4),
+.orders-table th:nth-child(5),
+.orders-table th:nth-child(7) {
+	width: 120px;
+}
+
+.contents-table th:nth-child(4),
+.widgets-table th:nth-child(3) {
+	width: 200px;
+}
+
+.gallery-table td:nth-child(2) a {
+	display: inline-block;
+	padding: 10px;
+	margin-top: 15px;
+	margin-right: 5px;
+	border: 1px solid #ccc;
+}
+.gallery-table td:nth-child(2) a:hover {
+	opacity: 0.75;
+}
+.gallery-table td:nth-child(2) a img {
+	height: 25px;
+}
+
+.form-horizontal .required:after {
+	position: absolute;
+	margin-left: 5px;
+	content: ' *';
+	color: #d33;
+}
+.form-horizontal textarea {
+	resize: none;
+}
+.text-muted span {
+	color: #00f;
+}
+.onpage {
+	width: 200px;
+}
+.swal2-title {
+	font-size: 24px !important;
+	padding-bottom: 10px !important;
+}
+.swal2-content input[type="text"] {
+	width: 100%;
+	font-size: 16px;
+	margin-bottom: 15px; 
+	padding: 3px 5px;
+}
+.swal2-content input.score {
+	width: 20%!important;
+}
+.swal2-content label {
+	cursor: pointer;
+}
+
+.controls {
+	margin-top: 10px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.admin td {
+	background: #fcf!important;
+}

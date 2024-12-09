@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>shootnbox</title>
+
+    <style>
+        :root{
+            --gradient: linear-gradient(#da3a8d 0%, #fff 100%);
+        }
+
+        :root:has(body.orange) {    
+            --color-accent: #E3763E;   
+            --gradient: linear-gradient(#E3763E 0%, #fff 100%); 
+        }
+
+        :root:has(body.blue) {    
+            --color-accent: #3DA6DC; 
+            --gradient: linear-gradient(#3DA6DC 0%, #fff 100%);   
+        }
+
+        :root:has(body.green) {    
+            --color-accent: #4DAD58; 
+            --gradient: linear-gradient(#4DAD58 0%, #fff 100%);   
+        }
+
+        :root:has(body.purple) {    
+            --color-accent: #59579F;   
+            --gradient: linear-gradient(#59579F 0%, #fff 100%); 
+        }
+    </style>
+</head>
+<body class="accent-green">
+    <div class="wrapper">
+        <header class="header">    
+            <img src="img/logo.svg" alt="shootnbox logo">   
+        </header>
+        <main class="main">
+            <section class="main-section">
+                <div class="container form-page__wrapper">
+                    <div class="form-page__postalcode form-page__content js-form-tab active">
+                        <div class="form-page__header-wrapper">
+                            <h2 class="title bg-title">Code postal</h2>
+                            <h2 class="title">Du lieu d’évènement</h2>
+                        </div>
+                        <p class="text-large">Pour commencer, veuillez renseigner le code postal 
+                            de votre lieu d’évènement</p>
+                        <div class="form-page__form">
+                            <div class="input__wrapper">
+                                <input type="number" id="postcode" class="input text-large input--boxshadow" placeholder="Code postal">
+                            </div>
+                            <button class="next-button" onclick="swapTab(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="37.546" height="33.413" viewBox="0 0 37.546 33.413">
+                                    <g id="Сгруппировать_24" data-name="Сгруппировать 24" transform="translate(2.5 3.511)">
+                                      <line id="Линия_10" data-name="Линия 10" x2="31.534" transform="translate(0 13.195)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+                                      <line id="Линия_11" data-name="Линия 11" x2="16.714" y2="13.195" transform="translate(14.82)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+                                      <line id="Линия_12" data-name="Линия 12" y1="13.195" x2="16.714" transform="translate(14.82 13.195)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+                                    </g>
+                                  </svg>                              
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-page__content form-page__type js-form-tab">
+                        <div class="form-page__header-wrapper">
+                            <h2 class="title bg-title">Type</h2>
+                            <h2 class="title">D’ÉVÈNEMENT</h2>
+                        </div>
+                        <div class="type__content-wrapper">
+                            <p class="text-large">Votre évènement sera t-il :</p>
+                            <div class="type__button-wrapper">
+                                <a href="boxes.php?type=entreprise" class="button text-large">Professionnel</a>
+                                <a href="boxes.php?type=particulier" class="button text-large">Privé</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-page__content form-page__confirm js-form-tab">
+                        <div class="form-page__header-wrapper">
+                            <h2 class="title bg-title">VOTRE BORNE</h2>
+                        </div>
+                        <div class="confirm__content-wrapper">
+                            <img src="img/banner.png" alt="">
+                            <div class="confirm__button-wrapper">
+                                <h2 class="title">299€ TTC</h2>
+                                <button class="button text-large">SÉLECTIONNER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>              
+        </main>
+    </div>
+    
+    <script src="js/main.js?v=1.1.9"></script>
+    <script src="js/phone-mask.js"></script>
+</body>
+</html>

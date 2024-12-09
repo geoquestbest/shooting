@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Useful meta tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow, noodp">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Creation</title>
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <script src="js/signals.min.js"></script>
+    <script src="js/snap.svg-min.js"></script>
+    <script src="js/FileSaver.min.js"></script>
+    <script src="js/TextureFactory.js"></script>
+    <style type="text/css">
+        html {
+            background-color: #D8D8D8;
+        }
+
+        *:not(input) {
+            user-select: none;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+        .creation__label-checbox:disabled+.creation-btn-label-box {
+            opacity: 0.25;
+            cursor: auto;
+        }
+
+        .creation__label-checbox:checked+.creation-btn-label-box {
+            border: 1px solid rgba(59, 59, 59, .9);
+            background-color: rgba(59, 59, 59, .1);
+        }
+
+        .creation-btn-label-box {
+            justify-content: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: none;
+            height: 25px;
+            width: 25px;
+            transition: .4s;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+
+        }
+
+        #svgContainer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            outline: #CCC solid 1px;
+            overflow: auto;
+            user-select: none;
+        }
+
+        #svgContainer svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*outline:#F00 solid 1px;*/
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .crosshair-cursor {
+            cursor: crosshair;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range] {
+            width: 200px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        input[type=range]::-moz-range-track {
+
+            height: 1px;
+            border: 1px solid #909090;
+            background-color: #909090;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            background: #E7326A;
+            border: 1px solid #E7326A;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        .creation__zoom-title {
+            font-style: normal;
+
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .creation__zoom-range {
+            width: 100px !important;
+        }
+
+        .creation__zoom-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__zoom-coll {
+            width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-title {
+
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+
+        }
+
+        .creation__logo-span {
+
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 17px;
+            color: #383838;
+            padding-right: 15px;
+        }
+
+        .creation__logo-wrapp {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation {
+            width: 100%;
+            overflow-y: auto;
+            height: 75vh;
+        }
+
+        .box-left {
+            height: 100vh;
+        }
+
+        .creation__button {
+            width: 268px;
+            height: 50px;
+            flex-shrink: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+        .creation__row-shell-2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creation__input-text {
+            width: 190px;
+        }
+
+        .btn-dell {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            width: 35px;
+            height: 35px;
+            background: url('img/bk.svg') no-repeat center center;
+            cursor: pointer;
+        }
+
+        .creation-select {
+            width: 240px;
+        }
+
+        .creation__row-7 {
+            margin-bottom: 20px;
+        }
+
+
+
+        .creation__row-3-wrapp {
+            justify-content: flex-end;
+            padding-right: 0;
+        }
+
+        .creation-btn-2 {
+            margin-left: 15px;
+        }
+
+        .creation__row-5 .creation__label-span::before {
+            content: '';
+            right: -60px;
+        }
+
+        .creation__row-6 .creation__label-span::before,
+        .creation__row-contour .creation__label-span::before {
+            content: '';
+            right: 0;
+        }
+
+        .creation__row-contour {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .creation__row-shell.creation__row-shell-new {
+            margin-top: 16px;
+            margin-bottom: 5px;
+        }
+
+        .creation__row-contour {
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 17px;
+
+            color: #383838;
+        }
+
+        .logo-range {
+            width: 50px !important;
+        }
+
+        .creation__logo-wrapp {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .creation__logo-wrapp .creation__label-span::before {
+            content: '';
+            right: 30px;
+        }
+
+
+        .creation__row-logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cration__row-2-wrapp {
+            justify-content: flex-end;
+        }
+
+        .creation {
+            padding-right: 30px;
+        }
+
+        .creation-select {
+            width: 100%;
+        }
+
+        .creation__row-shell-5,
+        .creation__row-shell {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-shell-4 {
+            margin-bottom: 7px;
+        }
+
+        .creation__row-shell-2 {
+            margin-bottom: 18px;
+        }
+
+        .creation__row-3.creation__row-shell {
+            padding-bottom: 11px;
+        }
+
+        .creation__row-logo {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-left">
+            <header class="header">
+                <div class="container">
+                    <div class="header__wrapp">
+                        <a href="javascript:window.history.go(-1);" class="logo logo-return">
+                            <img src="img/logo.svg" alt="" class="logo-img">
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="creation">
+                <div class="creation__titile">
+                    Modifier le texte
+                </div>
+
+                <div class="creation__wrapper">
+                    <div id="ui">
+                        <div id="commonTools" class="hidden">
+
+                            <div id="addTextButton" class="creation__row open-popup-title"
+                                data-popup='#creation__popup-title'>
+                                Ajouter une zone de texte
+                                <button class="creation-btn">
+                                    <img src="img/crous.svg" alt="" class="cration-btn-img"
+                                        data-popup='#creation__popup-title'>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div id="textTools" class="hidden">
+                            <div class="creation__row-shell  creation__row-shell-2">
+                                <input id="textInput" class="creation__input-text" type="text"
+                                    placeholder="Champ texte">
+                                <button id="deleteTextButton" class='btn-dell'>
+                                </button>
+                            </div>
+                            <div class="creation__row-shell creation__row-shell-3">
+                                <div class="creation-subtitle">
+                                    Police & taille
+                                </div>
+                                <select id="textFontFamilySelect" class='creation-select'>
+                                </select>
+                            </div>
+
+
+
+                            <div class="creation__row-2 creation__row-shell ">
+                                Taille
+                                <div class="cration__row-2-wrapp">
+                                    <input type="range" id="textScaleRange" min="0.1" max="4.0" value="1.0" step="0.05"
+                                        class="creation__input-range --width" />
+
+                                </div>
+                            </div>
+
+                            <div class="creation__row-2 creation__row-shell creation__row-shell-new">
+                                Opacité
+                                <div class="cration__row-2-wrapp">
+                                    <input type="range" id="textOpacityRange" min="0.0" max="1.0" value="1.0"
+                                        step="0.05" class="creation__input-range --width" />
+                                </div>
+                            </div>
+
+                            <div class="creation__row-3 creation__row-shell">
+                                <div class="creation__row-3-title">
+                                    Style
+                                </div>
+                                <div class="creation__row-3-wrapp">
+                                    <label class="creation-btn-label">
+                                        <input id='textFontWeightCheckbox' type="checkbox"
+                                            class="creation__label-checbox">
+                                        <div class="creation-btn-label-box">
+                                            <img src="img/G.svg" alt="" class="creation-btn-imgs">
+                                        </div>
+                                    </label>
+                                    <label class="creation-btn-label">
+                                        <input id='textFontStyleCheckbox' type="checkbox"
+                                            class="creation__label-checbox">
+                                        <div class="creation-btn-label-box">
+                                            <img src="img/b-3.svg" alt="" class="creation-btn-imgs">
+                                        </div>
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="creation__row-shell creation__row-shell-5">
+                                <div class="creation__row-4">
+                                    Couleur du texte
+                                    <label class="label__input-wrapp">
+                                        <span class="label-input-color">
+                                            <input id="textFillColorInput" class="creation__input-color" type="color"
+                                                value="#C9A53D">
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="creation__row-5">
+                                    <label class="creation__label">
+                                        <input id='textGradientCheckbox' type="checkbox"
+                                            class="creation__label-checkbox-h">
+                                        <span class="creation__label-span">
+                                            Dégradé
+                                        </span>
+                                    </label>
+                                    <label class="label__input-wrapp input__hiden --hiden">
+                                        <span class="label-input-color">
+                                            <input id="textFillColor2Input" class="creation__input-color" type="color"
+                                                value="#D22F25">
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="creation__row-6 creation__row-shell">
+                                Ombre portée
+
+                                <label class="creation__label">
+                                    <input id="textShadowCheckbox" type="checkbox" class="creation__label-checkbox-h">
+                                    <span class="creation__label-span">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="creation__row-contour ">
+                                Contour
+                                <label class="creation__label">
+                                    <input id="textStrokeCheckbox" type="checkbox" class="creation__label-checkbox-h">
+                                    <span class="creation__label-span">
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="contour-box">
+                                <div class="creation__row-7 ">
+                                    Couleur du contour
+                                    <label class="label__input-wrapp">
+                                        <span class="label-input-color">
+                                            <input id="textStrokeColorInput" class="creation__input-color" type="color"
+                                                value="#010202">
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="creation__row-8 creation__row-shell">
+                                    Largeur du contour
+                                    <div class="creation__row-8-box">
+                                        <input id="textStrokeWidthRange" type="range" value="1" min="0.25" max="24"
+                                            step="0.25" class="creation__input-range creation__input-range --width-2" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="logoTools" class="hidden">
+                            <div class="creation__row-logo">
+                                <div class='creation__logo-title'>Logo</div>
+                                <div class='creation__logo-wrapp'>
+                                    <label class="creation__label">
+                                        <input id="logoInvertedCheckbox" type="checkbox"
+                                            class="creation__label-checkbox-h">
+                                        <span class="creation__label-span">
+                                        </span>
+                                    </label>
+                                    <input type="range" class='logo-range' id="logoScaleRange" min="0.1" max="4.0"
+                                        value="1.0" step="0.05" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="creation__zoom-row">
+                            <span class='creation__zoom-title'>Zoom</span>
+                            <div class="creation__zoom-coll">
+                                <input id="zoomInputRange" class='creation__zoom-range' type="range" min="0.1" max="2.0"
+                                    step="0.05" value="1.0" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="popup__bg">
+                    <div id='creation__popup-one' class="creation__popup popup">
+                        <img class="creation__popup-img" src="img/creation-popup-img.svg" alt="">
+                        <div class="creation__popup-title">
+                            Etes-vous sûr de valider votre maquette?
+                        </div>
+                        <div class="creation__popup-text">
+                            Une fois votre maquette validée, vous ne pourrez<br>
+                            plus revenir dessus.
+                        </div>
+                        <div class="creation__popup-row">
+
+                            <button class="dialog-action-cancel cratino__popup-btn close-popup">
+                                Annuler
+                            </button>
+                            <a href="javascript:void(0)" class="dialog-action-save cratino__popup-btn close-popup">
+                                Valider
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id='creation__popup-title' class="creation__popup-title-form popup">
+                        <div class="creation__popup-title-form-title">
+                            Veuillez saisir votre texte
+                        </div>
+                        <input class='creation__popup-title-input dialog-input' type="text" value="ABCDEFGH">
+                        <div class="creation__popup-row creation__popup-title-row">
+                            <button class="dialog-action-cancel cratino__popup-btn close-popup">
+                                Annuler
+                            </button>
+                            <button class="dialog-action-add  cratino__popup-btn close-popup">
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="creation__button open-popup-cteation" data-popup='#creation__popup-one' id="saveAsImagetoServerButton">
+                Valider
+            </button>
+
+            <!--button id="saveFrameButton">Save Frame</button>
+			<button id="savePreviewButton">Save Preview</button>
+            <button id="saveResultButton">Save Result</button>
+			<button id="saveDataButton">Save Data</button-->
+            <!--<button id="saveAsSVGButton">Save as SVG</button>-->
+            <!--button id="savePreview2Button">Save Preview 2</button-->
+            <div class="footer">
+                <div class="footer__wrapp">
+                    01.45.01.66.66 |
+                    <a class="footer__wrapp-link" href="mailto:contact@shootnbox.fr">contact@shootnbox.fr </a>
+                </div>
+            </div>
+        </div>
+        <div class="box-creation">
+            <div class="box-creation-title">Personnalisez votre contour photo en y ajoutant votre texte.</div>
+            <div id="svgContainer"></div>
+        </div>
+    </div>
+    <script src="js/app.js?v=1.4.1"></script>
+</body>
+
+</html>

@@ -1,0 +1,351 @@
+@font-face {
+    font-family: "Hey October";
+    src: url("../font/HeyOctober.eot");
+    src: url("../font/HeyOctober.eot?#iefix") format("embedded-opentype"),
+        url("../font/HeyOctober.woff2") format("woff2"), url("../font/HeyOctober.woff") format("woff"),
+        url("../font/HeyOctober.ttf") format("truetype"), url("../font/HeyOctober.svg#HeyOctober") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.entrance {
+    background: url("../img/background.png") repeat center center/cover;
+}
+.entrance__form-logo {
+    font-family: "Hey October";
+    font-size: 33px;
+    line-height: 1;
+    color: #3f3f3f;
+    margin-bottom: 26px;
+}
+
+.entrance__form {
+    max-width: 410px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 15px;
+    padding-bottom: 39px;
+}
+
+.entrance__form-input {
+    width: 282px;
+    margin: 0 auto;
+    height: 45px;
+    font-size: 17px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 27px;
+}
+
+.entrance__form-title {
+    font-size: 19px;
+    margin-bottom: 36px;
+}
+
+.entrance__form-btn {
+    margin-top: 36px;
+}
+
+.entrance {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.entrance .header {
+    width: 100vw;
+}
+.entrance .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 52px;
+    margin-top: 0;
+}
+
+@media (max-width: 470px) {
+    .entrance__form-logo {
+        font-size: 24px;
+    }
+    .entrance__form {
+        padding: 20px 15px;
+    }
+    .entrance__form-input {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .footer__wrapp,
+    .footer__wrapp-link {
+        font-style: normal;
+        font-weight: 200;
+        font-size: 18px;
+        line-height: 21px;
+        color: #fff;
+    }
+    .entrance__form-btn {
+        margin-top: 20px;
+    }
+    .entrance__form-title {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+}
+
+.templat .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 2;
+}
+
+.templat .footer {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+.templat .footer__wrapp {
+    background: #707070;
+    width: 100%;
+    height: 52px;
+    margin-bottom: 10px;
+}
+.templat__wrapp {
+    display: flex;
+
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.templat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    position: fixed;
+    top: 75px;
+    z-index: 1;
+    background: #fff;
+    padding: 25px 25px 15px 25px;
+    left: 0;
+    font-size: 19px;
+    font-weight: 800;
+    color: #e7388c;
+}
+
+.templat-row-btn {
+    font-size: 17px;
+    line-height: 1;
+    color: #fff;
+    background: #e7388c;
+    font-weight: 800;
+    width: 175px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 12px;
+    border-radius: 5px;
+}
+
+.open-box {
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    width: 205px;
+    min-height: 223px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+}
+.open-popup {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.open-popup-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 550px) {
+    .templat .footer {
+        display: none;
+    }
+    .templat-row-date {
+        display: none;
+    }
+    .templat-row {
+        justify-content: center;
+        bottom: 0;
+        top: auto;
+        padding: 24px 15px 30px 15px;
+    }
+}
+
+.open-link-btn,
+.open-down-btn {
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.open-link-btn img,
+.open-down-btn img,
+.open-link img {
+    height: 20px;
+    width: 20px;
+}
+
+.open-link.--mob {
+    display: none;
+}
+
+.open-popup-img {
+    width: 170px;
+    height: 165px;
+    object-fit: contain;
+    margin-top: 15px;
+}
+
+.templat {
+    overflow: hidden;
+}
+
+.open-link {
+    display: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.open-popup-container.active .open-link {
+    display: inline-block;
+}
+
+.open-popup-container.active .open-link.--mob {
+    display: none;
+}
+@media (max-width: 550px) {
+    .open-link.--mob {
+        display: none;
+    }
+
+    .open-popup-container.active .open-link,
+    .open-popup-container.active .open-link.--mob {
+        display: inline-block;
+    }
+    .open-link {
+        margin-right: 0;
+    }
+}
+
+.popup__bg .close-popup {
+    display: none;
+}
+
+.popup__bg .open-popup-img {
+    width: 586px;
+    height: 397px;
+    object-fit: contain;
+}
+
+.popup .open-link img,
+.popup .open-link-btn img,
+.popup .open-down-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.popup {
+    padding-top: 28px;
+    padding-bottom: 0;
+    border-radius: 5px;
+    padding-right: 64px;
+    padding-left: 64px;
+    border: 1px solid #707070;
+}
+.popup .open-popup-box {
+    margin-top: 20px;
+    position: relative;
+    left: 60px;
+}
+.popup-btn {
+    display: none;
+}
+
+.buttonPrev {
+    left: 5px;
+}
+
+.buttonNext {
+    right: 5px;
+}
+
+@media (max-width: 770px) {
+    .popup__bg .open-popup-img {
+        width: 386px;
+        height: 297px;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 550px) {
+    .popup__bg .open-popup-img {
+        width: 276px;
+        height: 197px;
+        object-fit: contain;
+    }
+    .popup {
+        padding-top: 28px;
+        padding-bottom: 0;
+        border-radius: 5px;
+        padding-right: 15px;
+        padding-left: 15px;
+        border: 1px solid #707070;
+    }
+
+    .popup .open-popup-box {
+        margin-top: 10px;
+        position: relative;
+        left: 0;
+    }
+    .popup .open-link img,
+    .popup .open-link-btn img,
+    .popup .open-down-btn img {
+        width: 20px;
+        height: 20px;
+    }
+    .buttonPrev img,
+    .buttonNext img {
+        width: 10px;
+    }
+    .buttonPrev {
+        left: 0;
+    }
+    .buttonNext {
+        right: 0;
+    }
+}

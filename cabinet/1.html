@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contour photo</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.min.css" />
+  </head>
+  <body>
+    <header class="header header--auth">
+      <div class="container">
+        <a href="#" class="header-logo">
+          <img src="./img/header/logo.svg" alt="header logo" />
+        </a>
+
+        <a href="#" class="header-logout">
+          Déconnexion
+          <img src="./img/header/logout.svg" alt="header logout" />
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="wraper">
+        <aside class="sidebar">
+          <div class="sidebar-navigation">
+            <a class="sidebar-navigation__user" href="#">
+              <span class="user-icon">
+                <img src="./img/sidebar/user.svg" alt="user icon" />
+              </span>
+              <span class="user-title">Camille Raffin</span>
+            </a>
+            <a class="sidebar-navigation__btn" href="./bienvenue.html">
+              <span class="btn-icon">
+                <img src="./img/sidebar/house.svg" alt="Accueil svg" />
+              </span>
+              <span class="btn-title">Accueil</span>
+            </a>
+            <a
+              href="./paiement.html"
+              class="sidebar-navigation__btn sidebar-navigation__btn--msg"
+            >
+              <span class="btn-icon">
+                <img src="./img/sidebar/paiement.svg" alt="Paiement svg" />
+              </span>
+              <span class="btn-title">Paiement</span>
+              <span class="btn-msg">
+                <span>1</span>
+              </span>
+            </a>
+            <a
+              href="./contour_photo.html"
+              class="sidebar-navigation__btn sidebar-navigation__btn--contour"
+            >
+              <span class="btn-icon">
+                <img
+                  src="./img/sidebar/contour_photo.png"
+                  alt="Contour photo svg"
+                />
+              </span>
+              <span class="btn-title">Contour photo</span>
+            </a>
+            <a class="sidebar-navigation__btn" href="./delivery.html">
+              <span class="btn-icon">
+                <img src="./img/sidebar/delivery.svg" alt="Livraison svg" />
+              </span>
+              <span class="btn-title">Livraison</span>
+            </a>
+            <a class="sidebar-navigation__btn" href="./gallery.html">
+              <span class="btn-icon">
+                <img
+                  src="./img/sidebar/photo_gallery.svg"
+                  alt="Galerie photo svg"
+                />
+              </span>
+              <span class="btn-title">Galerie photo</span>
+            </a>
+          </div>
+
+          <div class="sidebar-footer">
+            <span>Shootnbox</span>
+            <a href="mailto:contact@shootnbox.fr">contact@shootnbox.fr</a>
+            <a href="tel:+0145016666">01 45 01 66 66</a>
+          </div>
+        </aside>
+        <main class="main">
+          <!-- <section class="contour">
+            <div class="contour-container">
+              <h1 class="contour-title">Contour photo</h1>
+              <img
+                class="contour-img"
+                src="./img/contour/trait.svg"
+                alt="trait"
+              />
+              <p class="contour-description">
+                Vous avez pris l’option « contour personnalisé », pouvez-vous
+                donc s’il vous plaît
+                <span class="description-bold">
+                  nous fournir les éléments ci-dessous AVANT la deadline
+                  annoncée,
+                </span>
+                sans quoi nos équipes ne seront pas en mesure d’assurer dans les
+                temps la création de votre contour photo un contour blanc sera
+                alors automatiquement appliqué. Dès réception de ces éléments la
+                team graphisme vous enverra une maquette du contour de la photo
+                pour validation.
+              </p>
+
+              <form class="form">
+                <div class="form-fields">
+                  <div class="form-field">
+                    <label for="mail" class="form-field__label">
+                      Adresse mail sur laquelle envoyer le BAT*
+                    </label>
+                    <input
+                      type="text"
+                      id="mail"
+                      class="form-field__input"
+                      placeholder="camille@shootnbox.fr"
+                    />
+                    <span class="form-field__error">Field required</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="text" class="form-field__label">
+                      Texte à ajouter sur le contour
+                    </label>
+                    <input
+                      type="text"
+                      id="text"
+                      class="form-field__input"
+                      placeholder="Summer Party - 5 juillet 2024"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="typographies" class="form-field__label">
+                      Calibri Bold / Bebas
+                    </label>
+                    <input
+                      type="text"
+                      id="typographies"
+                      class="form-field__input"
+                      placeholder="Nom des typographies"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="palmier" class="form-field__label">
+                      Thématique de l'évènement
+                    </label>
+
+                    <textarea
+                      id="palmier"
+                      class="form-field__textarea"
+                      placeholder="Je voudrais des palmier et un soleil sur le contour"
+                    ></textarea>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="code" class="form-field__label"> 52e54d </label>
+                    <input
+                      type="text"
+                      class="form-field__input"
+                      id="code"
+                      placeholder="Code couleur"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="autres" class="form-field__label">
+                      Autres remarques
+                    </label>
+                    <textarea
+                      id="autres"
+                      class="form-field__textarea"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="form-valid">
+                  <h3 class="valid-title">Importer des documents</h3>
+                  <p class="valid-description">
+                    Envoyer tous les éléments de votre choix (logo, charte,
+                    image, inspirations…)
+                  </p>
+
+                  <div class="valid-formats">
+                    <img
+                      src="./img/contour/formats.svg"
+                      alt="formats"
+                      class="formats-icon"
+                    />
+                    <h4 class="formats-title">Formats pdf, jpeg, png</h4>
+                  </div>
+
+                  <div class="contour-example">
+                    <img
+                      src="./img/contour/example.svg"
+                      alt="example"
+                      class="example-icon"
+                    />
+                    <h4 class="example-title">Exemple de contour photo</h4>
+                  </div>
+
+                  <button class="valid-btn" type="submit">Valider</button>
+                </div>
+              </form>
+            </div>
+
+            <p class="text">
+              N’hésitez pas à demander Diane ou Camille au 07 56 85 85 35 pour
+              toutes questions ou indications supplémentaires.
+            </p>
+          </section> -->
+
+          <!-- <section class="contour contour--load">
+            <div class="contour-container">
+              <h1 class="contour-title">Contour photo</h1>
+              <img
+                src="./img/contour/trait.svg"
+                class="contour-img"
+                alt="trait"
+              />
+              <p class="contour-description">
+                <span class="description-line">
+                  Vous trouverez ci-dessous nos gabarits téléchargeables ainsi
+                  que des exemples de contours photo.
+                </span>
+
+                <span class="description-bold">
+                  Merci de nous retourner votre création au format fichier
+                  source à l’adresse mail:
+                  <a class="description-link" href="#">
+                    graphisme@shootnbox.fr
+                  </a>
+                </span>
+                Sans retour de votre part
+                <span class="description-bold">
+                  avant la deadline annoncée,
+                </span>
+                nos équipes ne seront pas en mesure d’assurer dans les temps la
+                création de votre contour photo. Un contour blanc sera alors
+                automatiquement appliqué.
+              </p>
+            </div>
+
+            <form class="form">
+              <div class="form-field form-field__row">
+                <button class="contour-btn">
+                  <span class="btn-icon">
+                    <img src="./img/contour/load.svg" alt="load" />
+                  </span>
+                  <span class="btn-text">
+                    <span class="btn-bold">Télécharger le gabarit</span>
+                    (suite Adobe & Canva)
+                  </span>
+                </button>
+
+                <div class="contour-line">ou</div>
+
+                <div class="form-field__checkbox">
+                  <input type="checkbox" id="photo" />
+                  <span class="box"></span>
+                  <label for="photo">
+                    <span>Je ne veux pas de contour photo</span>
+                    <span class="checkbox-bold">
+                      Je veux ma photo en pleine page
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </form>
+
+            <p class="text">
+              N’hésitez pas à demander Diane ou Camille au 07 56 85 85 35 pour
+              toutes questions ou indications supplémentaires.
+            </p>
+          </section> -->
+
+          <!-- <section class="contour contour--load contour--ou">
+            <div class="contour-container">
+              <h1 class="contour-title">Contour photo</h1>
+              <img
+                class="contour-img"
+                src="./img/contour/trait.svg"
+                alt="trait"
+              />
+
+              <p class="contour-description">
+                Concernant la personnalisation du contour photo, vous trouverez
+                en pièce jointe le gabarit ainsi que des exemples de contours.
+                <span class="description-bold"
+                  >Si vous choisissez les gabarits, merci de nous retourner le
+                  fichier source du contour sur l’adresse mail suivante :
+                  <a href="#" class="description-link"
+                    >graphisme@shootnbox.fr</a
+                  ></span
+                >
+                <span class="description-line">
+                  Si la deadline de renvoi n’est pas respectée, nos équipes ne
+                  seront pas en mesure d’assurer dans les temps la création de
+                  votre contour photo. Un contour blanc sera alors
+                  automatiquement appliqué.
+                </span>
+              </p>
+            </div>
+
+            <form class="form">
+              <div class="form-field form-field__row">
+                <div class="contour-items">
+                  <button class="contour-btn">
+                    <span class="btn-icon">
+                      <img src="./img/contour/edit.svg" alt="edit" />
+                    </span>
+                    <span class="btn-text">
+                      <span class="btn-bold">Accéder à votre outil</span>
+                      <span class="btn-bold">de création en ligne</span>
+                    </span>
+                  </button>
+                  <h2 class="contour-center">ou</h2>
+                  <button class="contour-btn">
+                    <span class="btn-icon">
+                      <img src="./img/contour/load.svg" alt="load" />
+                    </span>
+                    <span class="btn-text">
+                      <span class="btn-bold">Télécharger le gabarit</span>
+                      (suite Adobe & Canva)
+                    </span>
+                  </button>
+                </div>
+
+                <div class="contour-example">
+                  <img
+                    class="example-icon"
+                    src="./img/contour/example.svg"
+                    alt="example"
+                  />
+                  <h4 class="example-title">Exemple de contour photo</h4>
+                </div>
+
+                <div class="contour-line">ou</div>
+
+                <div class="form-field__checkbox">
+                  <input type="checkbox" id="photo" />
+                  <span class="box"></span>
+                  <label for="photo">
+                    <span>Je ne veux pas de contour photo</span>
+                    <span class="checkbox-bold">
+                      Je veux ma photo en pleine page
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </form>
+
+            <p class="text">
+              N’hésitez pas à demander Diane ou Camille au 07 56 85 85 35 pour
+              toutes questions ou indications supplémentaires.
+            </p>
+          </section> -->
+
+          <section class="contour contour--logo">
+            <div class="contour-container">
+              <h1 class="contour-title">Contour photo</h1>
+              <img
+                src="./img/contour/trait.svg"
+                class="contour-img"
+                alt="trait"
+              />
+              <p class="contour-description">
+                Merci ! Vos informations ont bien été prises en compte, nos
+                équipes reviennent vers vous dès que possible.
+              </p>
+
+              <form class="form">
+                <div class="form-fields">
+                  <div class="form-field">
+                    <label for="mail" class="form-field__label">
+                      Adresse mail sur laquelle envoyer le BAT*
+                    </label>
+                    <input
+                      type="text"
+                      id="mail"
+                      disabled
+                      class="form-field__input"
+                      placeholder="camille@shootnbox.fr"
+                    />
+                    <span class="form-field__error">Required field</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="text" class="form-field__label">
+                      Texte à ajouter sur le contour
+                    </label>
+                    <input
+                      type="text"
+                      id="text"
+                      class="form-field__input"
+                      placeholder="Summer Party - 5 juillet 2024"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="typographies" class="form-field__label">
+                      Calibri Bold / Bebas
+                    </label>
+                    <input
+                      type="text"
+                      id="typographies"
+                      class="form-field__input"
+                      placeholder="Nom des typographies"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="palmier" class="form-field__label">
+                      Thématique de l'évènement
+                    </label>
+
+                    <textarea
+                      id="palmier"
+                      class="form-field__textarea"
+                      placeholder="Je voudrais des palmier et un soleil sur le contour"
+                    ></textarea>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="code" class="form-field__label"> 52e54d </label>
+                    <input
+                      type="text"
+                      class="form-field__input"
+                      id="code"
+                      placeholder="Code couleur"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="autres" class="form-field__label">
+                      Autres remarques
+                    </label>
+                    <textarea
+                      id="autres"
+                      class="form-field__textarea"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="form-valid">
+                  <div class="form-field">
+                    <input
+                      type="text"
+                      id="logo"
+                      class="form-field__input"
+                      placeholder="Logo"
+                    />
+                  </div>
+                  <div class="form-field">
+                    <input
+                      type="text"
+                      id="graphique"
+                      class="form-field__input"
+                      placeholder="Charte graphique"
+                    />
+                  </div>
+                  <div class="form-field">
+                    <input
+                      type="text"
+                      id="fleur"
+                      class="form-field__input"
+                      placeholder="Visuel Fleur"
+                    />
+                  </div>
+
+                  <h3 class="valid-title">Importer des documents</h3>
+                  <p class="valid-description">
+                    Envoyer tous les éléments de votre choix (logo, charte,
+                    image, inspirations…)
+                  </p>
+
+                  <div class="valid-formats">
+                    <img
+                      class="formats-icon"
+                      src="./img/contour/formats.svg"
+                      alt="formats"
+                    />
+                    <h4 class="formats-title">Formats pdf, jpeg, png</h4>
+                  </div>
+
+                  <div class="contour-example">
+                    <img
+                      src="./img/contour/example.svg"
+                      alt="example"
+                      class="example-icon"
+                    />
+                    <h4 class="example-title">Exemple de contour photo</h4>
+                  </div>
+
+                  <button class="valid-btn" type="submit">Valider</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="wraper-popup wraper-popup--warning wraper-popup--active">
+              <div class="popup">
+                <img
+                  src="./img/popup/close.svg"
+                  alt="close"
+                  class="popup-close"
+                />
+                <h2 class="popup-title">Attention</h2>
+
+                <img
+                  src="./img/popup/contour-trait.svg"
+                  alt="trait"
+                  class="popup-img"
+                />
+
+                <p class="popup-description">
+                  Êtes-vous sûr de vouloir votre
+                  <span>photo pleine page sans contour photo ?</span>
+                </p>
+                <p class="popup-text">
+                  <img src="./img/popup/warning.svg" alt="warning" />
+                  En cas de question, appellez le 01 45 01 66 66
+                </p>
+
+                <button class="popup-btn popup-btn--active">Retour</button>
+                <button class="popup-btn">Valider</button>
+              </div>
+            </div>
+
+            <p class="text">
+              N’hésitez pas à demander Diane ou Camille au 07 56 85 85 35 pour
+              toutes questions ou indications supplémentaires.
+            </p>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./js/app.js"></script>
+  </body>
+</html>
